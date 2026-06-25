@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
@@ -48,33 +48,33 @@ export function NotesClient({ pdfs, notes }: Props) {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold text-white">Notes & Documents</h1>
-            <p className="text-white/75 text-sm mt-0.5">Upload PDFs · AI processes them for RAG-powered tutoring</p>
+            <p className="text-white/75 text-sm mt-0.5">Upload PDFs Â· AI processes them for RAG-powered tutoring</p>
           </div>
           <div>
             <input ref={fileRef} type="file" accept=".pdf" className="hidden" onChange={handleUpload} />
             <Button onClick={() => fileRef.current?.click()} disabled={uploading}
               className="gap-2 bg-white text-blue-600 hover:bg-white/90 border-0 font-semibold">
               {uploading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
-              {uploading ? "Uploading…" : "Upload PDF"}
+              {uploading ? "Uploadingâ€¦" : "Upload PDF"}
             </Button>
           </div>
         </div>
       </div>
 
-      <div className="p-6 space-y-4">
+      <div className="p-4 md:p-6 space-y-4">
         {uploadError && (
           <div className="rounded-xl bg-destructive/10 border border-destructive/20 p-4 text-sm text-destructive flex items-center gap-2">
-            ⚠️ {uploadError}
+            âš ï¸ {uploadError}
           </div>
         )}
 
         {/* Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
-            { label: "Total PDFs", value: localPdfs.length, icon: "📄", color: "text-blue-500", bg: "from-blue-500/10 to-blue-600/5" },
-            { label: "Processed", value: localPdfs.filter((p) => p.processed).length, icon: "✅", color: "text-green-500", bg: "from-green-500/10 to-green-600/5" },
-            { label: "Processing", value: localPdfs.filter((p) => !p.processed).length, icon: "⏳", color: "text-amber-500", bg: "from-amber-500/10 to-orange-500/5" },
-            { label: "Notes", value: notes.length, icon: "📝", color: "text-purple-500", bg: "from-purple-500/10 to-purple-600/5" },
+            { label: "Total PDFs", value: localPdfs.length, icon: "ðŸ“„", color: "text-blue-500", bg: "from-blue-500/10 to-blue-600/5" },
+            { label: "Processed", value: localPdfs.filter((p) => p.processed).length, icon: "âœ…", color: "text-green-500", bg: "from-green-500/10 to-green-600/5" },
+            { label: "Processing", value: localPdfs.filter((p) => !p.processed).length, icon: "â³", color: "text-amber-500", bg: "from-amber-500/10 to-orange-500/5" },
+            { label: "Notes", value: notes.length, icon: "ðŸ“", color: "text-purple-500", bg: "from-purple-500/10 to-purple-600/5" },
           ].map(({ label, value, icon, color, bg }) => (
             <div key={label} className={`stat-card bg-gradient-to-br ${bg} text-center`}>
               <div className="text-2xl mb-1">{icon}</div>
@@ -94,7 +94,7 @@ export function NotesClient({ pdfs, notes }: Props) {
             {localPdfs.length === 0 ? (
               <div className="stat-card">
                 <div className="empty-state">
-                  <div className="empty-state-icon">📄</div>
+                  <div className="empty-state-icon">ðŸ“„</div>
                   <p className="font-semibold text-lg">No PDFs uploaded yet</p>
                   <p className="text-sm text-muted-foreground max-w-xs">
                     Upload lecture notes, previous papers, or reference books. Our AI will read them and use them in your tutor sessions.
@@ -122,13 +122,13 @@ export function NotesClient({ pdfs, notes }: Props) {
                           <div className="flex-1 min-w-0">
                             <p className="font-semibold text-sm truncate">{pdf.original_name}</p>
                             <p className="text-xs text-muted-foreground mt-0.5">
-                              {pdf.file_size_bytes ? formatFileSize(pdf.file_size_bytes) : "—"} · {format(new Date(pdf.created_at), "dd MMM yyyy")}
+                              {pdf.file_size_bytes ? formatFileSize(pdf.file_size_bytes) : "â€”"} Â· {format(new Date(pdf.created_at), "dd MMM yyyy")}
                             </p>
                             <div className="mt-2">
                               {pdf.processed ? (
                                 <span className="badge-success"><CheckCircle className="h-3 w-3" /> Ready for AI</span>
                               ) : (
-                                <span className="badge-warning"><Clock className="h-3 w-3 animate-spin" /> Processing…</span>
+                                <span className="badge-warning"><Clock className="h-3 w-3 animate-spin" /> Processingâ€¦</span>
                               )}
                             </div>
                           </div>
@@ -145,7 +145,7 @@ export function NotesClient({ pdfs, notes }: Props) {
             {notes.length === 0 ? (
               <div className="stat-card">
                 <div className="empty-state">
-                  <div className="empty-state-icon">📝</div>
+                  <div className="empty-state-icon">ðŸ“</div>
                   <p className="font-semibold text-lg">No notes yet</p>
                   <p className="text-sm text-muted-foreground">Notes generated from your AI tutor sessions will appear here</p>
                 </div>

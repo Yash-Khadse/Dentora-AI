@@ -33,7 +33,7 @@ export default async function SubjectDetailPage({ params }: { params: Promise<{ 
   const completion = totalTopics > 0 ? Math.round((completedTopics / totalTopics) * 100) : 0;
 
   return (
-    <div className="p-6 space-y-6 max-w-4xl">
+    <div className="p-4 md:p-6 space-y-4 md:space-y-6 max-w-4xl">
       <div className="flex items-center gap-3">
         <Link href="/subjects">
           <Button variant="ghost" size="icon" className="rounded-full">

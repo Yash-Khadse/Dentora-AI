@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -137,7 +137,7 @@ export function VivaSimulatorClient({ subjects, pastSessions }: Props) {
       // Show inline feedback
       setMessages((prev) => [
         ...prev,
-        { role: "feedback", content: `Score: ${score}/100 — ${feedback}` },
+        { role: "feedback", content: `Score: ${score}/100 â€” ${feedback}` },
       ]);
 
       // Generate next question
@@ -204,7 +204,7 @@ export function VivaSimulatorClient({ subjects, pastSessions }: Props) {
   const modeInfo = EXAM_MODES.find((m) => m.value === selectedMode);
   const subjectName = subjects.find((s) => s.id === selectedSubject)?.name;
 
-  // ── Session ended — show results ────────────────────────────
+  // â”€â”€ Session ended â€” show results â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if (sessionEnded) {
     const scoreColor = finalScore !== null && finalScore >= 75
       ? "text-green-500"
@@ -212,18 +212,18 @@ export function VivaSimulatorClient({ subjects, pastSessions }: Props) {
         ? "text-amber-500"
         : "text-red-500";
     return (
-      <div className="p-6 animate-fade-in space-y-5 max-w-3xl">
+      <div className="p-4 md:p-6 animate-fade-in space-y-5 max-w-3xl">
         <div>
           <h1 className="page-title">Viva Complete</h1>
-          <p className="page-subtitle">{subjectName} · {modeInfo?.label} Mode</p>
+          <p className="page-subtitle">{subjectName} Â· {modeInfo?.label} Mode</p>
         </div>
         <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
           className="stat-card text-center py-10">
           <div className="text-6xl mb-3">
-            {finalScore !== null && finalScore >= 75 ? "🏆" : finalScore !== null && finalScore >= 50 ? "📝" : "📚"}
+            {finalScore !== null && finalScore >= 75 ? "ðŸ†" : finalScore !== null && finalScore >= 50 ? "ðŸ“" : "ðŸ“š"}
           </div>
           <div className={cn("text-5xl font-bold mb-2", scoreColor)}>
-            {finalScore ?? "—"}%
+            {finalScore ?? "â€”"}%
           </div>
           <p className="text-muted-foreground">
             {questionCount} question{questionCount !== 1 ? "s" : ""} answered
@@ -259,10 +259,10 @@ export function VivaSimulatorClient({ subjects, pastSessions }: Props) {
     );
   }
 
-  // ── Setup screen ─────────────────────────────────────────────
+  // â”€â”€ Setup screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if (!sessionStarted) {
     return (
-      <div className="p-6 animate-fade-in space-y-6 max-w-3xl">
+      <div className="p-4 md:p-6 animate-fade-in space-y-6 max-w-3xl">
         <div>
           <h1 className="page-title">Viva Simulator</h1>
           <p className="page-subtitle">Practice oral examinations with an AI-powered examiner</p>
@@ -320,7 +320,7 @@ export function VivaSimulatorClient({ subjects, pastSessions }: Props) {
             className="w-full h-11 gap-2 dentora-gradient text-white border-0 hover:opacity-90"
           >
             {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Mic className="h-4 w-4" />}
-            {loading ? "Starting session…" : "Start Viva Session"}
+            {loading ? "Starting sessionâ€¦" : "Start Viva Session"}
           </Button>
         </div>
 
@@ -352,9 +352,9 @@ export function VivaSimulatorClient({ subjects, pastSessions }: Props) {
     );
   }
 
-  // ── Active session ───────────────────────────────────────────
+  // â”€â”€ Active session â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   return (
-    <div className="p-6 animate-fade-in space-y-4 max-w-3xl">
+    <div className="p-4 md:p-6 animate-fade-in space-y-4 max-w-3xl">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 dentora-gradient rounded-xl flex items-center justify-center">
@@ -454,7 +454,7 @@ export function VivaSimulatorClient({ subjects, pastSessions }: Props) {
             <Textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Type your answer… (Enter to send, Shift+Enter for new line)"
+              placeholder="Type your answerâ€¦ (Enter to send, Shift+Enter for new line)"
               className="resize-none bg-background text-sm"
               rows={3}
               disabled={loading}

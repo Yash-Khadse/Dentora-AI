@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+﻿/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Metadata } from "next";
 import { createServerSupabaseClient } from "@/lib/db/supabase-server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -34,7 +34,7 @@ export default async function AdminQuestionsPage() {
         <p className="text-white/75 text-sm mt-0.5">{total} questions in database</p>
       </div>
 
-      <div className="p-6 space-y-5">
+      <div className="p-4 md:p-6 space-y-5">
         <div className="grid grid-cols-3 gap-3">
           {[
             { label: "Total", value: total, color: "text-blue-500", bg: "from-blue-500/10 to-blue-600/5" },
@@ -57,7 +57,7 @@ export default async function AdminQuestionsPage() {
           <CardContent className="p-0">
             {total === 0 ? (
               <div className="empty-state py-12">
-                <div className="empty-state-icon">📋</div>
+                <div className="empty-state-icon">ðŸ“‹</div>
                 <p className="font-semibold">No questions yet</p>
                 <p className="text-sm text-muted-foreground max-w-xs text-center">
                   Questions are generated as students use the viva and quiz features.

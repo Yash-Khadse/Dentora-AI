@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
@@ -76,7 +76,7 @@ export function AnalyticsClient({ metrics, streakLog, subjectProgress, achieveme
   const activeDays = streakLog.filter((d) => d.minutes > 0).length;
 
   return (
-    <div className="p-6 space-y-6 animate-fade-in">
+    <div className="p-4 md:p-6 space-y-6 animate-fade-in">
       {/* Header */}
       <div>
         <h1 className="page-title">Analytics</h1>
@@ -119,7 +119,7 @@ export function AnalyticsClient({ metrics, streakLog, subjectProgress, achieveme
               <div>
                 <h3 className="font-semibold text-sm">30-Day Study Activity</h3>
                 <p className="text-xs text-muted-foreground mt-0.5">
-                  {activeDays} active days · {Math.round(totalMinutes / 60)}h total
+                  {activeDays} active days Â· {Math.round(totalMinutes / 60)}h total
                 </p>
               </div>
               <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -149,9 +149,9 @@ export function AnalyticsClient({ metrics, streakLog, subjectProgress, achieveme
               })}
             </div>
             <div className="flex gap-4 text-xs text-muted-foreground border-t pt-3">
-              <span>🔵 &lt;30min · light study</span>
-              <span>🟦 30-90min · good session</span>
-              <span>🔷 90min+ · power study</span>
+              <span>ðŸ”µ &lt;30min Â· light study</span>
+              <span>ðŸŸ¦ 30-90min Â· good session</span>
+              <span>ðŸ”· 90min+ Â· power study</span>
             </div>
           </div>
         </TabsContent>
@@ -161,7 +161,7 @@ export function AnalyticsClient({ metrics, streakLog, subjectProgress, achieveme
           {subjectProgress.length === 0 ? (
             <div className="stat-card">
               <div className="empty-state">
-                <div className="empty-state-icon">📚</div>
+                <div className="empty-state-icon">ðŸ“š</div>
                 <p className="font-medium">No subject data yet</p>
                 <p className="text-sm text-muted-foreground">Start studying to track your progress here</p>
               </div>
@@ -210,7 +210,7 @@ export function AnalyticsClient({ metrics, streakLog, subjectProgress, achieveme
           {achievements.length === 0 ? (
             <div className="stat-card">
               <div className="empty-state">
-                <div className="empty-state-icon">🏆</div>
+                <div className="empty-state-icon">ðŸ†</div>
                 <p className="font-medium">No achievements yet</p>
                 <p className="text-sm text-muted-foreground">Keep studying to unlock achievements and earn XP!</p>
               </div>

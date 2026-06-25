@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+﻿/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Metadata } from "next";
 import { createServerSupabaseClient } from "@/lib/db/supabase-server";
 import { Users, BookOpen, FileText, Activity, TrendingUp } from "lucide-react";
@@ -34,7 +34,7 @@ export default async function AdminPage() {
         <p className="text-white/75 text-sm mt-0.5">Dentora AI platform statistics and management</p>
       </div>
 
-      <div className="p-6 space-y-6">
+      <div className="p-4 md:p-6 space-y-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map(({ label, value, icon: Icon, color, bg, iconBg }) => (
             <div key={label} className={`stat-card bg-gradient-to-br ${bg}`}>

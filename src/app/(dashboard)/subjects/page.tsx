@@ -49,12 +49,12 @@ export default async function SubjectsPage() {
   return (
     <div className="animate-fade-in">
       {/* Header */}
-      <div className="dentora-gradient px-6 py-8">
+      <div className="dentora-gradient px-4 md:px-6 py-6 md:py-8">
         <h1 className="text-xl font-bold text-white">Subjects</h1>
         <p className="text-white/75 text-sm mt-0.5">Track your progress across all 6 BDS final year subjects</p>
 
         {/* Overall stats */}
-        <div className="mt-5 grid grid-cols-3 gap-3">
+        <div className="mt-4 md:mt-5 grid grid-cols-3 gap-2 md:gap-3">
           {[
             { label: "Overall Progress", value: `${Math.round(totalCompletion)}%`, icon: "📊" },
             { label: "Subjects", value: "6", icon: "📚" },
@@ -69,8 +69,8 @@ export default async function SubjectsPage() {
         </div>
       </div>
 
-      <div className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className="p-4 md:p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-4">
           {BDS_FINAL_YEAR_SUBJECTS.map((subject) => {
             const subjectId = subjectIdMap[subject.code];
             const prog = subjectId ? progressMap[subjectId] : null;

@@ -60,39 +60,39 @@ export function DashboardHero({ userName, examDate, stats }: HeroProps) {
   ];
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 md:space-y-4">
       {/* Greeting */}
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-xl md:text-2xl font-bold">
           {greeting}, {userName} 👋
         </h1>
-        <p className="text-muted-foreground text-sm mt-0.5">
+        <p className="text-muted-foreground text-sm mt-0.5 hidden sm:block">
           Here&apos;s your exam preparation overview for today.
         </p>
       </motion.div>
 
       {/* Stat cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         {cards.map((card, i) => (
           <motion.div
             key={card.label}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.08 }}
-            className={`stat-card bg-gradient-to-br ${card.bg}`}
+            className={`stat-card bg-gradient-to-br ${card.bg} !p-3 md:!p-5`}
           >
-            <div className="flex items-start justify-between mb-3">
-              <p className="text-xs text-muted-foreground font-medium">{card.label}</p>
-              <card.icon size={16} className={card.color} />
+            <div className="flex items-start justify-between mb-2 md:mb-3">
+              <p className="text-[11px] md:text-xs text-muted-foreground font-medium leading-tight">{card.label}</p>
+              <card.icon size={14} className={`${card.color} shrink-0 ml-1`} />
             </div>
-            <p className={`text-2xl font-bold ${card.color}`}>{card.value}</p>
-            <p className="text-xs text-muted-foreground mt-1">{card.sub}</p>
+            <p className={`text-xl md:text-2xl font-bold ${card.color}`}>{card.value}</p>
+            <p className="text-[11px] md:text-xs text-muted-foreground mt-0.5 md:mt-1 truncate">{card.sub}</p>
           </motion.div>
         ))}
       </div>
 
       {/* Readiness progress bar */}
-      <div className="bg-card rounded-xl border p-4">
+      <div className="bg-card rounded-xl border p-3 md:p-4">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm font-medium">Overall Exam Readiness</span>
           <span className={`text-sm font-bold ${readinessColor}`}>{stats.readinessScore}%</span>

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+﻿/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Metadata } from "next";
 import { createServerSupabaseClient } from "@/lib/db/supabase-server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -36,10 +36,10 @@ export default async function AdminUsersPage() {
     <div className="animate-fade-in">
       <div className="dentora-gradient px-6 py-8">
         <h1 className="text-xl font-bold text-white">Users</h1>
-        <p className="text-white/75 text-sm mt-0.5">{total} registered users · {admins} admins</p>
+        <p className="text-white/75 text-sm mt-0.5">{total} registered users Â· {admins} admins</p>
       </div>
 
-      <div className="p-6 space-y-5">
+      <div className="p-4 md:p-6 space-y-5">
         {/* Quick stats */}
         <div className="grid grid-cols-3 gap-3">
           {[
@@ -91,14 +91,14 @@ export default async function AdminUsersPage() {
                             </AvatarFallback>
                           </Avatar>
                           <div>
-                            <p className="font-medium text-sm">{user.full_name ?? "—"}</p>
+                            <p className="font-medium text-sm">{user.full_name ?? "â€”"}</p>
                             {user.roll_number && (
                               <p className="text-xs text-muted-foreground">{user.roll_number}</p>
                             )}
                           </div>
                         </div>
                       </TableCell>
-                      <TableCell className="text-sm text-muted-foreground">{user.colleges?.name ?? "—"}</TableCell>
+                      <TableCell className="text-sm text-muted-foreground">{user.colleges?.name ?? "â€”"}</TableCell>
                       <TableCell>
                         <span className={`text-[11px] px-2 py-0.5 rounded-full capitalize font-medium ${ROLE_STYLE[role] ?? ROLE_STYLE.student}`}>
                           {role}
@@ -107,11 +107,11 @@ export default async function AdminUsersPage() {
                       <TableCell className="text-sm font-medium">{(user.total_xp ?? 0).toLocaleString()}</TableCell>
                       <TableCell className="text-sm">
                         <span className="flex items-center gap-1">
-                          🔥 {user.current_streak ?? 0}d
+                          ðŸ”¥ {user.current_streak ?? 0}d
                         </span>
                       </TableCell>
                       <TableCell className="text-sm text-muted-foreground">
-                        {user.created_at ? format(new Date(user.created_at), "dd MMM yy") : "—"}
+                        {user.created_at ? format(new Date(user.created_at), "dd MMM yy") : "â€”"}
                       </TableCell>
                     </TableRow>
                   );

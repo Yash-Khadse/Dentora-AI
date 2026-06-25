@@ -143,3 +143,20 @@
 
 /* ── PDF viewer ── */
 .react-pdf__Page__canvas { max-width: 100% !important; height: auto !important; }
+
+/* ── Mobile utilities ── */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+/* Minimum touch target size on mobile */
+@media (max-width: 1024px) {
+  .nav-link { min-height: 44px; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+}
+
+/* Prevent content from being hidden behind bottom nav on mobile */
+@media (max-width: 1024px) {
+  .page-header { @apply mb-4; }
+  .page-title  { @apply text-xl; }
+}

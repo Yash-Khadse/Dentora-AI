@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,7 +16,7 @@ import {
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
-// ── Types ───────────────────────────────────────────────────────
+// â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 interface Subject { id: string; name: string; code: string }
 
 interface CaseStudy {
@@ -55,19 +55,19 @@ interface Evaluation {
 
 interface Props { subjects: Subject[]; pastCases: CaseStudy[]; userId: string }
 
-// ── Constants ───────────────────────────────────────────────────
+// â”€â”€ Constants â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const STEPS = [
-  { step: "history",      label: "History",        question: "What additional history would you take from this patient?", icon: "📋" },
-  { step: "examination",  label: "Examination",     question: "What examination would you perform and what findings do you expect?", icon: "🔍" },
-  { step: "investigation",label: "Investigations",  question: "What investigations would you order and why? Interpret the results.", icon: "🧪" },
-  { step: "diagnosis",    label: "Diagnosis",       question: "What is your primary diagnosis? List differential diagnoses with justification.", icon: "🎯" },
-  { step: "treatment",    label: "Treatment Plan",  question: "Write a complete, phased treatment plan for this patient.", icon: "💊" },
+  { step: "history",      label: "History",        question: "What additional history would you take from this patient?", icon: "ðŸ“‹" },
+  { step: "examination",  label: "Examination",     question: "What examination would you perform and what findings do you expect?", icon: "ðŸ”" },
+  { step: "investigation",label: "Investigations",  question: "What investigations would you order and why? Interpret the results.", icon: "ðŸ§ª" },
+  { step: "diagnosis",    label: "Diagnosis",       question: "What is your primary diagnosis? List differential diagnoses with justification.", icon: "ðŸŽ¯" },
+  { step: "treatment",    label: "Treatment Plan",  question: "Write a complete, phased treatment plan for this patient.", icon: "ðŸ’Š" },
 ];
 
 const UI_DIFFICULTIES = [
-  { value: "beginner",     label: "Beginner",     icon: "🟢", desc: "Straightforward presentation, common conditions" },
-  { value: "intermediate", label: "Intermediate", icon: "🟡", desc: "Moderate complexity, some clinical reasoning needed" },
-  { value: "advanced",     label: "Advanced",     icon: "🔴", desc: "Complex case, multiple differentials, critical thinking" },
+  { value: "beginner",     label: "Beginner",     icon: "ðŸŸ¢", desc: "Straightforward presentation, common conditions" },
+  { value: "intermediate", label: "Intermediate", icon: "ðŸŸ¡", desc: "Moderate complexity, some clinical reasoning needed" },
+  { value: "advanced",     label: "Advanced",     icon: "ðŸ”´", desc: "Complex case, multiple differentials, critical thinking" },
 ];
 
 const DIFF_COLOR: Record<string, string> = {
@@ -112,7 +112,7 @@ function ScoreRing({ score, size = 120 }: { score: number; size?: number }) {
   );
 }
 
-// ── Results View ────────────────────────────────────────────────
+// â”€â”€ Results View â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function ResultsView({
   caseStudy,
   answers,
@@ -129,7 +129,7 @@ function ResultsView({
   const stepKeys = ["history", "examination", "investigation", "diagnosis", "treatment"] as const;
 
   return (
-    <div className="p-6 space-y-5 max-w-3xl animate-fade-in">
+    <div className="p-4 md:p-6 space-y-5 max-w-3xl animate-fade-in">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="page-title">Case Complete</h1>
@@ -154,7 +154,7 @@ function ResultsView({
               </p>
               <p className="text-sm text-muted-foreground mt-0.5">
                 {score >= 75 ? "You demonstrate strong clinical reasoning." :
-                 score >= 50 ? "You covered the basics — review the missed areas below." :
+                 score >= 50 ? "You covered the basics â€” review the missed areas below." :
                  "Review the model answers and attempt similar cases."}
               </p>
             </div>
@@ -192,7 +192,7 @@ function ResultsView({
               </p>
               {strengths.map((s, i) => (
                 <p key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                  <span className="text-green-500 mt-0.5 shrink-0">✓</span>{s}
+                  <span className="text-green-500 mt-0.5 shrink-0">âœ“</span>{s}
                 </p>
               ))}
             </div>
@@ -206,7 +206,7 @@ function ResultsView({
               </p>
               {improvements.map((s, i) => (
                 <p key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                  <span className="text-amber-500 mt-0.5 shrink-0">→</span>{s}
+                  <span className="text-amber-500 mt-0.5 shrink-0">â†’</span>{s}
                 </p>
               ))}
             </div>
@@ -279,7 +279,7 @@ function ResultsView({
   );
 }
 
-// ── Main Component ───────────────────────────────────────────────
+// â”€â”€ Main Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export function CaseSimulatorClient({ subjects, pastCases }: Props) {
   const [selectedSubject, setSelectedSubject] = useState("");
   const [difficulty, setDifficulty] = useState("intermediate");
@@ -351,7 +351,7 @@ export function CaseSimulatorClient({ subjects, pastCases }: Props) {
     }
   };
 
-  // ── Results view ─────────────────────────────────────────────
+  // â”€â”€ Results view â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if (evaluation && activeCase) {
     return (
       <ResultsView
@@ -363,11 +363,11 @@ export function CaseSimulatorClient({ subjects, pastCases }: Props) {
     );
   }
 
-  // ── Active case — step-by-step ───────────────────────────────
+  // â”€â”€ Active case â€” step-by-step â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if (activeCase) {
     const step = STEPS[currentStep];
     return (
-      <div className="p-6 space-y-5 max-w-3xl animate-fade-in">
+      <div className="p-4 md:p-6 space-y-5 max-w-3xl animate-fade-in">
         {/* Header */}
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
@@ -461,7 +461,7 @@ export function CaseSimulatorClient({ subjects, pastCases }: Props) {
           <Textarea
             value={currentAnswer}
             onChange={(e) => setCurrentAnswer(e.target.value)}
-            placeholder="Write your clinical answer here…"
+            placeholder="Write your clinical answer hereâ€¦"
             rows={5}
             className="resize-none"
             onKeyDown={(e) => { if (e.key === "Enter" && e.ctrlKey) submitStep(); }}
@@ -472,7 +472,7 @@ export function CaseSimulatorClient({ subjects, pastCases }: Props) {
             <Button onClick={submitStep} disabled={!currentAnswer.trim() || loading} className="gap-2">
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ChevronRight className="h-4 w-4" />}
               {loading
-                ? currentStep + 1 >= STEPS.length ? "Evaluating…" : "Processing…"
+                ? currentStep + 1 >= STEPS.length ? "Evaluatingâ€¦" : "Processingâ€¦"
                 : currentStep + 1 >= STEPS.length ? "Submit for Scoring" : "Next Step"}
             </Button>
           </div>
@@ -500,9 +500,9 @@ export function CaseSimulatorClient({ subjects, pastCases }: Props) {
     );
   }
 
-  // ── Setup / landing screen ────────────────────────────────────
+  // â”€â”€ Setup / landing screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   return (
-    <div className="p-6 animate-fade-in space-y-5 max-w-3xl">
+    <div className="p-4 md:p-6 animate-fade-in space-y-5 max-w-3xl">
       <div>
         <h1 className="page-title">Case Simulator</h1>
         <p className="page-subtitle">Practice clinical case analysis with AI-generated patient scenarios</p>
@@ -511,7 +511,7 @@ export function CaseSimulatorClient({ subjects, pastCases }: Props) {
       {/* Configuration card */}
       <div className="stat-card space-y-5">
         <div className="flex items-center gap-3 pb-4 border-b">
-          <div className="w-10 h-10 dentora-gradient rounded-xl flex items-center justify-center text-xl">🏥</div>
+          <div className="w-10 h-10 dentora-gradient rounded-xl flex items-center justify-center text-xl">ðŸ¥</div>
           <div>
             <p className="font-semibold">Configure Your Case</p>
             <p className="text-xs text-muted-foreground">Choose subject and difficulty</p>
@@ -522,7 +522,7 @@ export function CaseSimulatorClient({ subjects, pastCases }: Props) {
           <label className="text-sm font-medium">Subject</label>
           <Select value={selectedSubject} onValueChange={setSelectedSubject}>
             <SelectTrigger className="h-11">
-              <SelectValue placeholder="Select a subject…" />
+              <SelectValue placeholder="Select a subjectâ€¦" />
             </SelectTrigger>
             <SelectContent>
               {subjects.map((s) => (
@@ -565,10 +565,10 @@ export function CaseSimulatorClient({ subjects, pastCases }: Props) {
           className="w-full h-11 gap-2 dentora-gradient text-white border-0 hover:opacity-90"
         >
           {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <FlaskConical className="h-4 w-4" />}
-          {loading ? "Generating clinical case…" : "Generate Clinical Case"}
+          {loading ? "Generating clinical caseâ€¦" : "Generate Clinical Case"}
         </Button>
         {loading && (
-          <p className="text-xs text-center text-muted-foreground animate-pulse">AI is building your case… ~10 seconds</p>
+          <p className="text-xs text-center text-muted-foreground animate-pulse">AI is building your caseâ€¦ ~10 seconds</p>
         )}
       </div>
 

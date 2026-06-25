@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,7 +15,7 @@ import {
 import { format, parseISO } from "date-fns";
 import { cn } from "@/lib/utils";
 
-// ── Types ──────────────────────────────────────────────────────
+// â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 interface Subject { name: string; code: string; color: string }
 
 interface StudySession {
@@ -59,7 +59,7 @@ interface Props {
   examDate: string | null;
 }
 
-// ── Session type config ─────────────────────────────────────────
+// â”€â”€ Session type config â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const SESSION_CONFIG: Record<string, { icon: React.ElementType; color: string; bg: string; label: string }> = {
   study:    { icon: BookOpen, color: "text-blue-500",   bg: "bg-blue-500/10",   label: "Study" },
   revision: { icon: RefreshCw, color: "text-green-500", bg: "bg-green-500/10",  label: "Revision" },
@@ -68,7 +68,7 @@ const SESSION_CONFIG: Record<string, { icon: React.ElementType; color: string; b
   break:    { icon: Clock,     color: "text-gray-400",  bg: "bg-gray-400/10",   label: "Break" },
 };
 
-// ── Plan Overview Section ───────────────────────────────────────
+// â”€â”€ Plan Overview Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function PlanOverview({ plan }: { plan: StudyPlan }) {
   const pd = plan.ai_strategy;
   const [showAll, setShowAll] = useState(false);
@@ -100,7 +100,7 @@ function PlanOverview({ plan }: { plan: StudyPlan }) {
           <ul className="space-y-1.5">
             {pd.strategy.map((s, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                <span className="text-primary mt-0.5 shrink-0">•</span>
+                <span className="text-primary mt-0.5 shrink-0">â€¢</span>
                 {s}
               </li>
             ))}
@@ -129,7 +129,7 @@ function PlanOverview({ plan }: { plan: StudyPlan }) {
               </Badge>
               <div>
                 <p className="text-sm font-medium">{sp.subject}</p>
-                <p className="text-xs text-muted-foreground">{sp.hours_per_week}h/week · {sp.reason}</p>
+                <p className="text-xs text-muted-foreground">{sp.hours_per_week}h/week Â· {sp.reason}</p>
               </div>
             </div>
           ))}
@@ -177,7 +177,7 @@ function PlanOverview({ plan }: { plan: StudyPlan }) {
           </div>
           {pd.warnings.map((w, i) => (
             <p key={i} className="text-xs text-muted-foreground flex items-start gap-2">
-              <span className="text-amber-500 mt-0.5 shrink-0">⚠</span>{w}
+              <span className="text-amber-500 mt-0.5 shrink-0">âš </span>{w}
             </p>
           ))}
         </div>
@@ -194,7 +194,7 @@ function PlanOverview({ plan }: { plan: StudyPlan }) {
   );
 }
 
-// ── Session Card ───────────────────────────────────────────────
+// â”€â”€ Session Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function SessionCard({
   session,
   index,
@@ -207,7 +207,7 @@ function SessionCard({
   const cfg = SESSION_CONFIG[session.session_type] ?? SESSION_CONFIG.study;
   const Icon = cfg.icon;
   const done = session.status === "completed";
-  const subjectName = session.subjects?.name ?? session.notes?.split("—")[1]?.trim() ?? null;
+  const subjectName = session.subjects?.name ?? session.notes?.split("â€”")[1]?.trim() ?? null;
   const subjectColor = session.subjects?.color;
 
   return (
@@ -246,9 +246,9 @@ function SessionCard({
         <div className="flex items-center gap-2 mt-1">
           <span className="text-[10px] text-muted-foreground flex items-center gap-1">
             <Clock className="h-2.5 w-2.5" />
-            {session.start_time?.slice(0, 5)} – {session.end_time?.slice(0, 5)}
+            {session.start_time?.slice(0, 5)} â€“ {session.end_time?.slice(0, 5)}
           </span>
-          <span className="text-[10px] text-muted-foreground">·</span>
+          <span className="text-[10px] text-muted-foreground">Â·</span>
           <span className="text-[10px] text-muted-foreground">{session.planned_duration_mins}m</span>
         </div>
       </div>
@@ -267,7 +267,7 @@ function SessionCard({
   );
 }
 
-// ── Day Group ──────────────────────────────────────────────────
+// â”€â”€ Day Group â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function DayGroup({
   date,
   daySessions,
@@ -288,7 +288,7 @@ function DayGroup({
         <div className="flex items-center gap-2">
           <CalendarDays className="h-4 w-4 text-muted-foreground" />
           <span className={cn("text-sm font-semibold", isToday && "text-primary")}>
-            {isToday ? "Today · " : ""}{format(parseISO(date), "EEEE, dd MMM")}
+            {isToday ? "Today Â· " : ""}{format(parseISO(date), "EEEE, dd MMM")}
           </span>
           <Badge variant="outline" className="text-[10px] px-1.5 py-0.5">
             {Math.floor(totalMins / 60)}h {totalMins % 60 > 0 ? `${totalMins % 60}m` : ""}
@@ -305,7 +305,7 @@ function DayGroup({
   );
 }
 
-// ── Main Component ─────────────────────────────────────────────
+// â”€â”€ Main Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export function StudyPlannerClient({ studyPlan, sessions: initialSessions, examDate }: Props) {
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -366,16 +366,16 @@ export function StudyPlannerClient({ studyPlan, sessions: initialSessions, examD
     }
   };
 
-  // ── Empty state ──────────────────────────────────────────────
+  // â”€â”€ Empty state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if (!currentPlan && sessions.length === 0) {
     return (
-      <div className="p-6 animate-fade-in max-w-lg mx-auto space-y-6">
+      <div className="p-4 md:p-6 animate-fade-in max-w-lg mx-auto space-y-6">
         <div>
           <h1 className="page-title">Study Planner</h1>
           <p className="page-subtitle">AI-powered personalized study schedule</p>
         </div>
         <div className="stat-card text-center space-y-5 py-10">
-          <div className="w-20 h-20 dentora-gradient rounded-2xl flex items-center justify-center text-4xl mx-auto">📅</div>
+          <div className="w-20 h-20 dentora-gradient rounded-2xl flex items-center justify-center text-4xl mx-auto">ðŸ“…</div>
           <div>
             <h2 className="text-xl font-bold">No Study Plan Yet</h2>
             <p className="text-muted-foreground text-sm mt-1 max-w-xs mx-auto">
@@ -383,9 +383,9 @@ export function StudyPlannerClient({ studyPlan, sessions: initialSessions, examD
             </p>
           </div>
           <div className="grid grid-cols-3 gap-3 text-xs text-muted-foreground">
-            <div className="bg-muted/50 rounded-lg p-3">📊 Smart scheduling</div>
-            <div className="bg-muted/50 rounded-lg p-3">🎯 Weak-area focus</div>
-            <div className="bg-muted/50 rounded-lg p-3">🔁 Spaced revision</div>
+            <div className="bg-muted/50 rounded-lg p-3">ðŸ“Š Smart scheduling</div>
+            <div className="bg-muted/50 rounded-lg p-3">ðŸŽ¯ Weak-area focus</div>
+            <div className="bg-muted/50 rounded-lg p-3">ðŸ” Spaced revision</div>
           </div>
           {error && (
             <p className="text-sm text-destructive bg-destructive/10 rounded-lg px-3 py-2">{error}</p>
@@ -396,11 +396,11 @@ export function StudyPlannerClient({ studyPlan, sessions: initialSessions, examD
             className="gap-2 dentora-gradient text-white border-0 hover:opacity-90 px-8"
           >
             {generating ? <Loader2 className="h-4 w-4 animate-spin" /> : <Zap className="h-4 w-4" />}
-            {generating ? "Generating your plan…" : "Generate My Study Plan"}
+            {generating ? "Generating your planâ€¦" : "Generate My Study Plan"}
           </Button>
           {generating && (
             <p className="text-xs text-muted-foreground animate-pulse">
-              AI is building your personalised schedule… this takes ~15 seconds
+              AI is building your personalised scheduleâ€¦ this takes ~15 seconds
             </p>
           )}
         </div>
@@ -408,7 +408,7 @@ export function StudyPlannerClient({ studyPlan, sessions: initialSessions, examD
     );
   }
 
-  // ── Main planner ─────────────────────────────────────────────
+  // â”€â”€ Main planner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   return (
     <div className="animate-fade-in">
       {/* Header */}
@@ -466,7 +466,7 @@ export function StudyPlannerClient({ studyPlan, sessions: initialSessions, examD
         </div>
       )}
 
-      <div className="p-6">
+      <div className="p-4 md:p-6">
         <Tabs defaultValue="today">
           <TabsList className="w-full">
             <TabsTrigger value="today" className="flex-1 gap-1.5">
@@ -484,7 +484,7 @@ export function StudyPlannerClient({ studyPlan, sessions: initialSessions, examD
             <TabsTrigger value="overview" className="flex-1">Plan</TabsTrigger>
           </TabsList>
 
-          {/* ── Today tab ── */}
+          {/* â”€â”€ Today tab â”€â”€ */}
           <TabsContent value="today" className="mt-4 space-y-2">
             <AnimatePresence mode="wait">
               {todaySessions.length === 0 ? (
@@ -494,7 +494,7 @@ export function StudyPlannerClient({ studyPlan, sessions: initialSessions, examD
                   className="stat-card"
                 >
                   <div className="empty-state py-10">
-                    <div className="empty-state-icon">✅</div>
+                    <div className="empty-state-icon">âœ…</div>
                     <p className="font-medium">All clear today!</p>
                     <p className="text-sm text-muted-foreground">No sessions scheduled for today.</p>
                   </div>
@@ -512,19 +512,19 @@ export function StudyPlannerClient({ studyPlan, sessions: initialSessions, examD
                 animate={{ opacity: 1, scale: 1 }}
                 className="stat-card text-center py-6 bg-green-500/5 border-green-200 dark:border-green-800"
               >
-                <p className="text-2xl mb-1">🎉</p>
+                <p className="text-2xl mb-1">ðŸŽ‰</p>
                 <p className="font-semibold text-green-700 dark:text-green-400">All done for today!</p>
-                <p className="text-xs text-muted-foreground mt-1">Great work — rest up for tomorrow.</p>
+                <p className="text-xs text-muted-foreground mt-1">Great work â€” rest up for tomorrow.</p>
               </motion.div>
             )}
           </TabsContent>
 
-          {/* ── Upcoming tab ── */}
+          {/* â”€â”€ Upcoming tab â”€â”€ */}
           <TabsContent value="upcoming" className="mt-4">
             {Object.keys(grouped).length === 0 ? (
               <div className="stat-card">
                 <div className="empty-state py-10">
-                  <div className="empty-state-icon">📅</div>
+                  <div className="empty-state-icon">ðŸ“…</div>
                   <p className="font-medium">No upcoming sessions</p>
                   <p className="text-sm text-muted-foreground">Regenerate your plan to schedule the next 2 weeks.</p>
                 </div>
@@ -540,7 +540,7 @@ export function StudyPlannerClient({ studyPlan, sessions: initialSessions, examD
             )}
           </TabsContent>
 
-          {/* ── Plan overview tab ── */}
+          {/* â”€â”€ Plan overview tab â”€â”€ */}
           <TabsContent value="overview" className="mt-4">
             {currentPlan ? (
               <ScrollArea className="h-[520px] pr-1">
@@ -549,7 +549,7 @@ export function StudyPlannerClient({ studyPlan, sessions: initialSessions, examD
             ) : (
               <div className="stat-card">
                 <div className="empty-state py-10">
-                  <div className="empty-state-icon">🤖</div>
+                  <div className="empty-state-icon">ðŸ¤–</div>
                   <p className="font-medium">No plan data yet</p>
                   <p className="text-sm text-muted-foreground">Generate a plan to see your AI strategy here.</p>
                 </div>

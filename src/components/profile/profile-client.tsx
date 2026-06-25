@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { User } from "@supabase/supabase-js";
@@ -67,7 +67,7 @@ export function ProfileClient({ user, profile, college }: Props) {
               </AvatarFallback>
             </Avatar>
             <div className="absolute -bottom-1 -right-1 w-7 h-7 bg-white rounded-full flex items-center justify-center text-sm">
-              🎓
+              ðŸŽ“
             </div>
           </div>
           <div className="text-white pb-1">
@@ -75,23 +75,23 @@ export function ProfileClient({ user, profile, college }: Props) {
             <p className="text-white/75 text-sm">{user.email}</p>
             <div className="flex items-center gap-2 mt-2">
               <Badge className="bg-white/20 text-white border-0 hover:bg-white/30 text-xs gap-1">
-                ⚡ Level {level}
+                âš¡ Level {level}
               </Badge>
               <Badge className="bg-white/20 text-white border-0 hover:bg-white/30 text-xs gap-1">
-                🔥 {profile?.current_streak ?? 0} day streak
+                ðŸ”¥ {profile?.current_streak ?? 0} day streak
               </Badge>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="p-6 space-y-5 max-w-3xl">
+      <div className="p-4 md:p-6 space-y-5 max-w-3xl">
         {/* XP / Level */}
         <div className="stat-card">
           <div className="flex items-center justify-between mb-3">
             <div>
               <p className="font-semibold text-sm">Level {level} Student</p>
-              <p className="text-xs text-muted-foreground">{xp} XP · {nextLevelXP - xp} XP to next level</p>
+              <p className="text-xs text-muted-foreground">{xp} XP Â· {nextLevelXP - xp} XP to next level</p>
             </div>
             <Badge variant="secondary" className="text-sm font-bold px-3">{xp} XP</Badge>
           </div>
@@ -157,7 +157,7 @@ export function ProfileClient({ user, profile, college }: Props) {
 
             <Button onClick={handleSave} disabled={saving} className="gap-2">
               {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : saved ? <CheckCircle className="h-4 w-4" /> : <Save className="h-4 w-4" />}
-              {saved ? "Saved!" : saving ? "Saving…" : "Save Changes"}
+              {saved ? "Saved!" : saving ? "Savingâ€¦" : "Save Changes"}
             </Button>
           </CardContent>
         </Card>

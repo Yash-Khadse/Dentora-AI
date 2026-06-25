@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+﻿/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -21,12 +21,12 @@ interface Notification {
 }
 
 const TYPE_CONFIG: Record<string, { icon: string; color: string; bg: string }> = {
-  reminder: { icon: "⏰", color: "text-blue-600", bg: "bg-blue-500/10" },
-  achievement: { icon: "🏆", color: "text-amber-600", bg: "bg-amber-500/10" },
-  plan_update: { icon: "📅", color: "text-purple-600", bg: "bg-purple-500/10" },
-  streak: { icon: "🔥", color: "text-orange-600", bg: "bg-orange-500/10" },
-  ai_insight: { icon: "🤖", color: "text-teal-600", bg: "bg-teal-500/10" },
-  exam_alert: { icon: "🚨", color: "text-red-600", bg: "bg-red-500/10" },
+  reminder: { icon: "â°", color: "text-blue-600", bg: "bg-blue-500/10" },
+  achievement: { icon: "ðŸ†", color: "text-amber-600", bg: "bg-amber-500/10" },
+  plan_update: { icon: "ðŸ“…", color: "text-purple-600", bg: "bg-purple-500/10" },
+  streak: { icon: "ðŸ”¥", color: "text-orange-600", bg: "bg-orange-500/10" },
+  ai_insight: { icon: "ðŸ¤–", color: "text-teal-600", bg: "bg-teal-500/10" },
+  exam_alert: { icon: "ðŸš¨", color: "text-red-600", bg: "bg-red-500/10" },
 };
 
 export default function NotificationsPage() {
@@ -95,7 +95,7 @@ export default function NotificationsPage() {
         </div>
       </div>
 
-      <div className="p-6">
+      <div className="p-4 md:p-6">
         {loading ? (
           <div className="flex items-center justify-center py-16">
             <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
@@ -103,7 +103,7 @@ export default function NotificationsPage() {
         ) : notifications.length === 0 ? (
           <div className="stat-card">
             <div className="empty-state">
-              <div className="empty-state-icon">🔔</div>
+              <div className="empty-state-icon">ðŸ””</div>
               <p className="font-semibold text-lg">No notifications yet</p>
               <p className="text-sm text-muted-foreground">
                 Study reminders, achievements, and plan updates will appear here.

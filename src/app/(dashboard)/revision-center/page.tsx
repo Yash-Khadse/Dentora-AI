@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+﻿/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { createServerSupabaseClient } from "@/lib/db/supabase-server";
@@ -69,13 +69,13 @@ export default async function RevisionCenterPage() {
           <div className="mt-4 bg-red-500/20 border border-red-300/30 rounded-xl p-3 flex items-center gap-3">
             <AlertCircle className="h-5 w-5 text-red-200 shrink-0" />
             <p className="text-sm text-white">
-              You have <strong>{overdueCount}</strong> overdue revision{overdueCount !== 1 ? "s" : ""} — tackle them first!
+              You have <strong>{overdueCount}</strong> overdue revision{overdueCount !== 1 ? "s" : ""} â€” tackle them first!
             </p>
           </div>
         )}
       </div>
 
-      <div className="p-6 space-y-5">
+      <div className="p-4 md:p-6 space-y-5">
         {/* Stats */}
         <div className="grid grid-cols-3 gap-3">
           <div className={`stat-card text-center ${overdueCount > 0 ? "bg-gradient-to-br from-red-500/10 to-red-600/5 border-red-200/50 dark:border-red-800/30" : ""}`}>
@@ -120,7 +120,7 @@ export default async function RevisionCenterPage() {
                     <CheckCircle className="h-8 w-8 text-green-500" />
                   </div>
                   <p className="font-semibold text-lg">All caught up!</p>
-                  <p className="text-sm text-muted-foreground">No overdue revisions — great work staying on track</p>
+                  <p className="text-sm text-muted-foreground">No overdue revisions â€” great work staying on track</p>
                 </div>
               </div>
             ) : (
@@ -134,7 +134,7 @@ export default async function RevisionCenterPage() {
             {upcomingCount === 0 ? (
               <div className="stat-card">
                 <div className="empty-state">
-                  <div className="empty-state-icon">📅</div>
+                  <div className="empty-state-icon">ðŸ“…</div>
                   <p className="font-semibold">No upcoming revisions</p>
                   <p className="text-sm text-muted-foreground">Review flashcards to build your revision schedule</p>
                 </div>
@@ -148,9 +148,9 @@ export default async function RevisionCenterPage() {
             {weakCount === 0 ? (
               <div className="stat-card">
                 <div className="empty-state">
-                  <div className="empty-state-icon">💪</div>
+                  <div className="empty-state-icon">ðŸ’ª</div>
                   <p className="font-semibold">No weak topics identified</p>
-                  <p className="text-sm text-muted-foreground">Keep studying — weak areas will be flagged automatically</p>
+                  <p className="text-sm text-muted-foreground">Keep studying â€” weak areas will be flagged automatically</p>
                 </div>
               </div>
             ) : (
@@ -197,7 +197,7 @@ function RevisionItem({ item, isOverdue }: { item: any; isOverdue?: boolean }) {
             <p className="font-medium text-sm">{item.topics?.name ?? "Unknown Topic"}</p>
             <div className="flex items-center gap-2 mt-0.5">
               <p className="text-xs text-muted-foreground">{item.topics?.subjects?.name}</p>
-              <span className="text-muted-foreground text-xs">·</span>
+              <span className="text-muted-foreground text-xs">Â·</span>
               <p className={`text-xs font-medium ${isOverdue ? "text-red-500" : "text-muted-foreground"}`}>
                 {isOverdue ? `${daysOverdue}d overdue` : `Due ${format(new Date(item.due_date), "dd MMM")}`}
               </p>

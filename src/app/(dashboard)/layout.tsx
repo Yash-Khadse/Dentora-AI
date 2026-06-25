@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { redirect } from "next/navigation";
 import { createServerSupabaseClient } from "@/lib/db/supabase-server";
-import { Sidebar } from "@/components/layout/sidebar";
-import { Topbar } from "@/components/layout/topbar";
+import { DashboardShell } from "@/components/layout/dashboard-shell";
 
 export default async function DashboardLayout({
   children,
@@ -14,7 +13,6 @@ export default async function DashboardLayout({
 
   if (!user) redirect("/login");
 
-  // Check onboarding status
   const { data: profile } = await supabase
     .from("profiles")
     .select("full_name, avatar_url, study_streak, onboarding_completed")
@@ -25,14 +23,12 @@ export default async function DashboardLayout({
     redirect("/onboarding");
   }
 
-  // Get unread notifications count
   const { count: unreadCount } = await supabase
     .from("notifications")
     .select("*", { count: "exact", head: true })
     .eq("user_id", user.id)
     .eq("is_read", false) as any;
 
-  // Check admin role
   const { data: userRecord } = await supabase
     .from("users")
     .select("role")
@@ -47,20 +43,17 @@ export default async function DashboardLayout({
     .slice(0, 2) || "DS";
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background">
-      <Sidebar isAdmin={userRecord?.role === "admin"} />
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        <Topbar
-          userInitials={initials}
-          avatarUrl={profile?.avatar_url || undefined}
-          userName={profile?.full_name?.split(" ")[0] || "Student"}
-          streak={profile?.study_streak || 0}
-          unreadNotifications={unreadCount || 0}
-        />
-        <main className="flex-1 overflow-y-auto">
-          {children}
-        </main>
-      </div>
-    </div>
+    <DashboardShell
+      isAdmin={userRecord?.role === "admin"}
+      topbarProps={{
+        userInitials: initials,
+        avatarUrl: profile?.avatar_url || undefined,
+        userName: profile?.full_name?.split(" ")[0] || "Student",
+        streak: profile?.study_streak || 0,
+        unreadNotifications: unreadCount || 0,
+      }}
+    >
+      {children}
+    </DashboardShell>
   );
 }

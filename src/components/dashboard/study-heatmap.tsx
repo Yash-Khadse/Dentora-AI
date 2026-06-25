@@ -45,27 +45,29 @@ export function StudyHeatmap({ metrics }: { metrics: Metric[] }) {
         </span>
       </div>
 
-      <div className="flex gap-1 flex-wrap">
-        {days.map((day) => {
-          const key = format(day, "yyyy-MM-dd");
-          const minutes = minutesByDate.get(key) || 0;
-          const intensity = getIntensity(minutes);
-          const isToday = isSameDay(day, today);
-          return (
-            <motion.div
-              key={key}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: days.indexOf(day) * 0.01 }}
-              title={`${format(day, "MMM d")}: ${minutesToHoursLabel(minutes)}`}
-              className={cn(
-                "w-6 h-6 rounded-sm cursor-default transition-colors",
-                INTENSITY_CLASSES[intensity],
-                isToday && "ring-2 ring-primary ring-offset-1"
-              )}
-            />
-          );
-        })}
+      <div className="overflow-x-auto -mx-1 pb-1">
+        <div className="flex gap-1 px-1 min-w-max">
+          {days.map((day) => {
+            const key = format(day, "yyyy-MM-dd");
+            const minutes = minutesByDate.get(key) || 0;
+            const intensity = getIntensity(minutes);
+            const isToday = isSameDay(day, today);
+            return (
+              <motion.div
+                key={key}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: days.indexOf(day) * 0.01 }}
+                title={`${format(day, "MMM d")}: ${minutesToHoursLabel(minutes)}`}
+                className={cn(
+                  "w-6 h-6 rounded-sm cursor-default transition-colors shrink-0",
+                  INTENSITY_CLASSES[intensity],
+                  isToday && "ring-2 ring-primary ring-offset-1"
+                )}
+              />
+            );
+          })}
+        </div>
       </div>
 
       <div className="flex items-center gap-1.5 mt-3 justify-end">

@@ -133,8 +133,8 @@ export function FlashcardsClient({ dueCards, allCards, subjects }: Props) {
   // ── Done screen ──
   if (view === "done") {
     return (
-      <div className="p-6 animate-fade-in">
-        <h1 className="page-title mb-6">Flashcards</h1>
+      <div className="p-4 md:p-6 animate-fade-in">
+        <h1 className="page-title mb-4 md:mb-6">Flashcards</h1>
         <div className="max-w-md mx-auto">
           <div className="stat-card text-center py-12 space-y-4">
             <div className="w-20 h-20 dentora-gradient rounded-2xl flex items-center justify-center text-4xl mx-auto">🎉</div>
@@ -250,7 +250,7 @@ export function FlashcardsClient({ dueCards, allCards, subjects }: Props) {
   // ── No cards yet ──
   if (reviewQueue.length === 0 || view === "generate") {
     return (
-      <div className="p-6 animate-fade-in space-y-5">
+      <div className="p-4 md:p-6 animate-fade-in space-y-4 md:space-y-5">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="page-title">Flashcards</h1>
@@ -306,7 +306,7 @@ export function FlashcardsClient({ dueCards, allCards, subjects }: Props) {
 
   // ── Review view ──
   return (
-    <div className="p-6 animate-fade-in space-y-5 max-w-2xl mx-auto">
+    <div className="p-4 md:p-6 animate-fade-in space-y-4 md:space-y-5 max-w-2xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>

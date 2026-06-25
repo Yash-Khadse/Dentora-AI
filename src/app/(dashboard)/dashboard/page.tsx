@@ -77,7 +77,7 @@ export default async function DashboardPage() {
   };
 
   return (
-    <div className="p-6 space-y-6 animate-fade-in">
+    <div className="p-4 md:p-6 space-y-4 md:space-y-6 animate-fade-in">
       <DashboardHero
         userName={profile?.full_name?.split(" ")[0] || "Student"}
         stats={stats}
@@ -86,13 +86,13 @@ export default async function DashboardPage() {
 
       <QuickActions flashcardsDue={stats.flashcardsDue} revisionDue={revisions.length} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="lg:col-span-2 space-y-4 md:space-y-6">
           <TodaysTasks sessions={sessions} />
           <SubjectProgress subjects={subjects} />
           <StudyHeatmap metrics={metrics} />
         </div>
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6">
           <RevisionQueue items={revisions} />
           <WeakSubjects subjects={subjects.filter((s: any) => s.is_weak)} />
         </div>

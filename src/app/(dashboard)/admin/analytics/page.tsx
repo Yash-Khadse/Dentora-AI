@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+﻿/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Metadata } from "next";
 import { createServerSupabaseClient } from "@/lib/db/supabase-server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,7 +9,7 @@ import { Trophy, BarChart3 } from "lucide-react";
 
 export const metadata: Metadata = { title: "Admin - Analytics" };
 
-const MEDAL = ["🥇", "🥈", "🥉"];
+const MEDAL = ["ðŸ¥‡", "ðŸ¥ˆ", "ðŸ¥‰"];
 
 export default async function AdminAnalyticsPage() {
   const supabase = await createServerSupabaseClient();
@@ -49,7 +49,7 @@ export default async function AdminAnalyticsPage() {
         <p className="text-white/75 text-sm mt-0.5">Platform-wide performance insights</p>
       </div>
 
-      <div className="p-6 space-y-5">
+      <div className="p-4 md:p-6 space-y-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {/* Top students */}
           <Card>
@@ -82,11 +82,11 @@ export default async function AdminAnalyticsPage() {
                                 {initials}
                               </AvatarFallback>
                             </Avatar>
-                            <span className="text-sm font-medium">{u.full_name ?? "—"}</span>
+                            <span className="text-sm font-medium">{u.full_name ?? "â€”"}</span>
                           </div>
                         </TableCell>
                         <TableCell className="text-sm font-semibold text-blue-500">{(u.total_xp ?? 0).toLocaleString()}</TableCell>
-                        <TableCell className="text-sm">🔥 {u.current_streak ?? 0}d</TableCell>
+                        <TableCell className="text-sm">ðŸ”¥ {u.current_streak ?? 0}d</TableCell>
                         <TableCell>
                           <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium ${
                             readiness >= 70 ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" :

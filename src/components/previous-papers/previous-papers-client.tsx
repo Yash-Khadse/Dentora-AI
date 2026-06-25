@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
@@ -92,7 +92,7 @@ export function PreviousPapersClient({ papers, subjects }: Props) {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold text-white">Previous Papers</h1>
-            <p className="text-white/75 text-sm mt-0.5">Upload past exams · AI analyzes patterns and predicts likely questions</p>
+            <p className="text-white/75 text-sm mt-0.5">Upload past exams Â· AI analyzes patterns and predicts likely questions</p>
           </div>
           <div>
             <input ref={fileRef} type="file" accept=".pdf" className="hidden" onChange={handleUpload} />
@@ -100,23 +100,23 @@ export function PreviousPapersClient({ papers, subjects }: Props) {
               className="gap-2 bg-white text-blue-600 hover:bg-white/90 border-0 font-semibold"
               title={selectedSubject === "all" ? "Select a subject filter first" : ""}>
               {uploading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
-              {uploading ? "Uploading…" : "Upload Paper"}
+              {uploading ? "Uploadingâ€¦" : "Upload Paper"}
             </Button>
           </div>
         </div>
       </div>
 
-      <div className="p-6 space-y-4">
+      <div className="p-4 md:p-6 space-y-4">
         {uploadError && (
-          <div className="rounded-xl bg-destructive/10 border border-destructive/20 p-4 text-sm text-destructive">⚠️ {uploadError}</div>
+          <div className="rounded-xl bg-destructive/10 border border-destructive/20 p-4 text-sm text-destructive">âš ï¸ {uploadError}</div>
         )}
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-3">
           {[
-            { label: "Total Papers", value: localPapers.length, icon: "📄", color: "text-blue-500", bg: "from-blue-500/10 to-blue-600/5" },
-            { label: "AI Analyzed", value: analyzedCount, icon: "🤖", color: "text-green-500", bg: "from-green-500/10 to-green-600/5" },
-            { label: "Years Covered", value: [...new Set(localPapers.map((p) => p.year))].length, icon: "📅", color: "text-purple-500", bg: "from-purple-500/10 to-purple-600/5" },
+            { label: "Total Papers", value: localPapers.length, icon: "ðŸ“„", color: "text-blue-500", bg: "from-blue-500/10 to-blue-600/5" },
+            { label: "AI Analyzed", value: analyzedCount, icon: "ðŸ¤–", color: "text-green-500", bg: "from-green-500/10 to-green-600/5" },
+            { label: "Years Covered", value: [...new Set(localPapers.map((p) => p.year))].length, icon: "ðŸ“…", color: "text-purple-500", bg: "from-purple-500/10 to-purple-600/5" },
           ].map(({ label, value, icon, color, bg }) => (
             <div key={label} className={`stat-card bg-gradient-to-br ${bg} text-center`}>
               <div className="text-2xl mb-1">{icon}</div>
@@ -150,7 +150,7 @@ export function PreviousPapersClient({ papers, subjects }: Props) {
             {filteredPapers.length === 0 ? (
               <div className="stat-card">
                 <div className="empty-state">
-                  <div className="empty-state-icon">📚</div>
+                  <div className="empty-state-icon">ðŸ“š</div>
                   <p className="font-semibold text-lg">No papers yet</p>
                   <p className="text-sm text-muted-foreground max-w-xs">
                     Select a subject filter, then upload previous year question papers. Our AI will analyze them to predict likely questions.
@@ -216,7 +216,7 @@ export function PreviousPapersClient({ papers, subjects }: Props) {
             {analyzedCount === 0 ? (
               <div className="stat-card">
                 <div className="empty-state">
-                  <div className="empty-state-icon">🔮</div>
+                  <div className="empty-state-icon">ðŸ”®</div>
                   <p className="font-semibold">No insights yet</p>
                   <p className="text-sm text-muted-foreground max-w-xs">
                     Analyze at least one paper to see AI-predicted high-yield topics and question trends.

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -79,7 +79,7 @@ export function SettingsClient({ userId, settings }: Props) {
         <p className="page-subtitle">Manage your Dentora AI preferences</p>
       </div>
 
-      <div className="p-6 space-y-4 max-w-2xl">
+      <div className="p-4 md:p-6 space-y-4 max-w-2xl">
         {/* Notifications */}
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>
           <Card>
@@ -136,9 +136,9 @@ export function SettingsClient({ userId, settings }: Props) {
                 <Select value={aiDifficulty} onValueChange={setAiDifficulty}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="beginner">Beginner — simplified explanations</SelectItem>
-                    <SelectItem value="intermediate">Intermediate — standard exam level</SelectItem>
-                    <SelectItem value="advanced">Advanced — university external level</SelectItem>
+                    <SelectItem value="beginner">Beginner â€” simplified explanations</SelectItem>
+                    <SelectItem value="intermediate">Intermediate â€” standard exam level</SelectItem>
+                    <SelectItem value="advanced">Advanced â€” university external level</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -148,9 +148,9 @@ export function SettingsClient({ userId, settings }: Props) {
                 <Select value={aiMode} onValueChange={setAiMode}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="study">Study Mode — detailed explanations</SelectItem>
-                    <SelectItem value="quiz">Quiz Mode — test recall first</SelectItem>
-                    <SelectItem value="viva">Viva Mode — oral exam simulation</SelectItem>
+                    <SelectItem value="study">Study Mode â€” detailed explanations</SelectItem>
+                    <SelectItem value="quiz">Quiz Mode â€” test recall first</SelectItem>
+                    <SelectItem value="viva">Viva Mode â€” oral exam simulation</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -215,9 +215,9 @@ export function SettingsClient({ userId, settings }: Props) {
                 <Label className="text-xs font-medium">Theme</Label>
                 <div className="grid grid-cols-3 gap-3">
                   {[
-                    { value: "light", label: "☀️ Light", desc: "Clean and bright" },
-                    { value: "dark", label: "🌙 Dark", desc: "Easy on eyes" },
-                    { value: "system", label: "💻 System", desc: "Auto-detect" },
+                    { value: "light", label: "â˜€ï¸ Light", desc: "Clean and bright" },
+                    { value: "dark", label: "ðŸŒ™ Dark", desc: "Easy on eyes" },
+                    { value: "system", label: "ðŸ’» System", desc: "Auto-detect" },
                   ].map((t) => (
                     <button
                       key={t.value}
@@ -244,7 +244,7 @@ export function SettingsClient({ userId, settings }: Props) {
 
         <Button onClick={handleSave} disabled={saving} className="w-full h-11 gap-2">
           {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : saved ? <CheckCircle className="h-4 w-4" /> : null}
-          {saved ? "Settings saved!" : saving ? "Saving…" : "Save All Settings"}
+          {saved ? "Settings saved!" : saving ? "Savingâ€¦" : "Save All Settings"}
         </Button>
       </div>
     </div>
