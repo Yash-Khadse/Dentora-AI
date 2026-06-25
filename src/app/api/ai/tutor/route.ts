@@ -3,7 +3,7 @@ import { createServerSupabaseClient } from "@/lib/db/supabase-server";
 import { buildTutorPrompt, DENTAL_CONTEXT } from "@/lib/ai/prompts";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 export const maxDuration = 60;
 
 // Only currently live Gemini models (1.5 series deprecated in v1beta)
